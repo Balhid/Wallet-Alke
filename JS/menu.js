@@ -49,12 +49,3 @@ btnMovimientos.addEventListener("click", function () {
     }, 1500);
 });
 
-$("#btnDepositar").on("click", function () {
-    $("#mensajeRedireccion")
-        .text("Redirigiendo a Depósito...")
-        .fadeIn(300)
-        .delay(800)
-        .fadeOut(300, function () {
-            window.location.href = "deposit.html";
-        });
-});

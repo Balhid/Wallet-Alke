@@ -1,6 +1,9 @@
 console.log("Ventana Depósito")
 const form = document.getElementById("depositarForm");
 
+const saldo = localStorage.getItem("saldo");
+$("#saldo").text(saldo);
+
 $("#depositarForm").on("submit", function (e) { 
     
     e.preventDefault();
@@ -28,9 +31,13 @@ $("#depositarForm").on("submit", function (e) {
     
    let movimientos = JSON.parse(localStorage.getItem("movimientos")) || [];
 
-    movimientos.push(`+ Depósito $${monto}`);
+movimientos.push({
+    tipo: "deposito",
+    monto: monto,
+    fecha: new Date().toLocaleString()
+});
 
-    localStorage.setItem("movimientos", JSON.stringify(movimientos));
+localStorage.setItem("movimientos", JSON.stringify(movimientos));
     
     
     $("#mensajeDeposito")

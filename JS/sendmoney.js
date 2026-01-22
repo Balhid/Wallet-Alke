@@ -107,9 +107,11 @@ document.getElementById("btnEnviar")?.addEventListener("click", function () {
 
     
     let movimientos = JSON.parse(localStorage.getItem("movimientos")) || [];
-    movimientos.push(`- $${monto} - Envío a ${destinatario}`);
+    movimientos.push({
+    tipo: "transferencia",
+    monto: monto,
+    fecha: new Date().toLocaleString()});
     localStorage.setItem("movimientos", JSON.stringify(movimientos));
-
     
     mensaje.innerHTML = `
         <div class="alert alert-success text-center mx-4">
